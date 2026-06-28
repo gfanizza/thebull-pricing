@@ -5,60 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>The Bull x Clonyo — Ricerca di Mercato e Pricing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
     <style>
 :root {
-    --bg: #0a0a0a;
-    --surface: #161616;
-    --primary: #f59e0b;
-    --primary-light: #fcd34d;
-    --accent: #34d399;
-    --accent-light: #6ee7b7;
-    --danger: #f87171;
-    --text: #ffffff;
-    --text2: #e5e5e5;
-    --text3: #d4d4d4;
-    --dim: #a3a3a3;
-    --border: #2a2a2a;
+    --bg: #05040F;
+    --bg2: #0B081A;
+    --section: #100B22;
+    --surface: rgba(32, 20, 74, 0.62);
+    --surface-solid: #1a1035;
+    --purple: #7B4DFF;
+    --purple-deep: #4E22D8;
+    --violet: #9B6CFF;
+    --blue: #5D8CFF;
+    --cyan: #42E8F2;
+    --turquoise: #1FE0C8;
+    --text: #FFFFFF;
+    --text2: #C9C2E6;
+    --text3: #E0DCF0;
+    --dim: #8F87B3;
+    --border: rgba(196, 177, 255, 0.28);
+    --border-light: rgba(255, 255, 255, 0.14);
+    --glow-purple: rgba(123, 77, 255, 0.55);
+    --glow-cyan: rgba(66, 232, 242, 0.45);
+    --gradient-primary: linear-gradient(90deg, #7B4DFF 0%, #42E8F2 100%);
+    --gradient-text: linear-gradient(90deg, #FFFFFF 0%, #9B6CFF 50%, #42E8F2 100%);
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Inter',-apple-system,sans-serif; background:var(--bg); color:var(--text); overflow:hidden; height:100vh; }
-.slide { display:none; width:100vw; height:100vh; padding:50px 70px; flex-direction:column; justify-content:center; position:relative; overflow-y:auto; }
+body { font-family:'Inter','Plus Jakarta Sans',-apple-system,sans-serif; background:var(--bg); color:var(--text); overflow:hidden; height:100vh; }
+.slide { display:none; width:100vw; height:100vh; padding:54px 72px; flex-direction:column; justify-content:center; position:relative; overflow-y:auto; }
 .slide.active { display:flex; }
-.slide-num { position:absolute; bottom:24px; right:36px; font-size:13px; color:var(--dim); }
-h1 { font-size:3rem; font-weight:800; line-height:1.1; margin-bottom:20px; }
-h2 { font-size:2.2rem; font-weight:700; line-height:1.2; margin-bottom:16px; }
-h3 { font-size:1.3rem; font-weight:600; color:var(--primary-light); margin-bottom:10px; }
-p,li { font-size:1.05rem; line-height:1.6; color:var(--text3); }
-.hi { color:var(--primary-light); font-weight:700; }
-.subtitle { font-size:1.2rem; color:var(--text2); margin-bottom:32px; }
+.slide-num { position:absolute; bottom:24px; right:36px; font-size:12px; color:var(--dim); letter-spacing:0.5px; }
+h1 { font-family:'Plus Jakarta Sans',sans-serif; font-size:3.2rem; font-weight:800; line-height:1.05; margin-bottom:20px; }
+h2 { font-family:'Plus Jakarta Sans',sans-serif; font-size:2.2rem; font-weight:700; line-height:1.15; margin-bottom:16px; color:var(--text); }
+h3 { font-family:'Plus Jakarta Sans',sans-serif; font-size:1.2rem; font-weight:600; color:var(--violet); margin-bottom:10px; }
+p,li { font-size:1rem; line-height:1.65; color:var(--text2); }
+.hi { background:var(--gradient-primary); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-weight:700; }
+.subtitle { font-size:1.15rem; color:var(--text2); margin-bottom:32px; line-height:1.5; }
 .g2 { display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start; }
 .g3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
 .g4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:16px; }
-.card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:24px; }
-.card-hi { background:var(--surface); border:2px solid var(--primary); border-radius:14px; padding:24px; }
-.stat { font-size:2.8rem; font-weight:800; color:var(--primary-light); line-height:1; }
-.stat-sm { font-size:2.2rem; font-weight:800; color:var(--primary-light); line-height:1; }
-.label { font-size:0.8rem; color:var(--dim); margin-top:6px; text-transform:uppercase; letter-spacing:0.5px; }
+.card { background:linear-gradient(180deg, rgba(42,26,97,0.72) 0%, rgba(12,8,30,0.78) 100%); border:1px solid var(--border); border-radius:14px; padding:24px; backdrop-filter:blur(12px); box-shadow:inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 32px rgba(37,18,99,0.2); }
+.card-hi { background:linear-gradient(180deg, rgba(60,36,130,0.8) 0%, rgba(14,9,32,0.85) 100%); border:2px solid var(--purple); border-radius:14px; padding:24px; backdrop-filter:blur(12px); box-shadow:0 0 24px rgba(123,77,255,0.25), inset 0 1px 0 rgba(255,255,255,0.1); }
+.stat { font-family:'Plus Jakarta Sans',sans-serif; font-size:2.8rem; font-weight:800; background:var(--gradient-primary); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
+.stat-sm { font-family:'Plus Jakarta Sans',sans-serif; font-size:2.2rem; font-weight:800; background:var(--gradient-primary); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
+.label { font-size:0.78rem; color:var(--dim); margin-top:6px; text-transform:uppercase; letter-spacing:0.6px; font-weight:500; }
 .chart-box { position:relative; width:100%; min-height:380px; }
 table { width:100%; border-collapse:collapse; margin-top:12px; }
 th,td { padding:11px 14px; text-align:left; border-bottom:1px solid var(--border); font-size:0.9rem; }
-th { color:var(--primary-light); font-weight:600; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.5px; }
+th { color:var(--cyan); font-weight:600; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.5px; }
 td { color:var(--text2); }
-.tag { display:inline-block; padding:3px 9px; border-radius:6px; font-size:0.72rem; font-weight:600; }
-.t-free { background:#064e3b; color:#6ee7b7; }
-.t-low { background:#1e3a5f; color:#93c5fd; }
-.t-mid { background:#4a2c17; color:#fcd34d; }
-.t-high { background:#4a1717; color:#fca5a5; }
-.progress { position:fixed; top:0; left:0; height:3px; background:var(--primary); transition:width .3s; z-index:100; }
-.badge { display:inline-block; padding:5px 14px; border:1px solid var(--primary); border-radius:20px; font-size:0.8rem; color:var(--primary-light); margin-bottom:20px; }
-.comp { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color .2s; }
-.comp:hover { border-color:var(--primary); }
-.comp h4 { font-size:1rem; font-weight:700; color:var(--text); margin-bottom:6px; }
+.tag { display:inline-block; padding:4px 10px; border-radius:6px; font-size:0.72rem; font-weight:600; }
+.t-free { background:rgba(31,224,200,0.15); color:#1FE0C8; border:1px solid rgba(31,224,200,0.3); }
+.t-low { background:rgba(93,140,255,0.15); color:#93c5fd; border:1px solid rgba(93,140,255,0.3); }
+.t-mid { background:rgba(155,108,255,0.15); color:#c4b5fd; border:1px solid rgba(155,108,255,0.3); }
+.t-high { background:rgba(255,95,138,0.15); color:#fca5c0; border:1px solid rgba(255,95,138,0.3); }
+.progress { position:fixed; top:0; left:0; height:3px; background:var(--gradient-primary); transition:width .3s; z-index:100; }
+.badge { display:inline-block; padding:6px 16px; border:1px solid var(--purple); border-radius:20px; font-size:0.78rem; color:var(--violet); margin-bottom:20px; font-weight:600; letter-spacing:0.3px; }
+.comp { background:linear-gradient(180deg, rgba(42,26,97,0.6) 0%, rgba(12,8,30,0.7) 100%); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color .2s, box-shadow .2s; backdrop-filter:blur(8px); }
+.comp:hover { border-color:var(--purple); box-shadow:0 0 16px rgba(123,77,255,0.2); }
+.comp h4 { font-family:'Plus Jakarta Sans',sans-serif; font-size:1rem; font-weight:700; color:var(--text); margin-bottom:6px; display:flex; align-items:center; gap:8px; }
 .comp p { font-size:0.82rem; color:var(--dim); line-height:1.5; }
 .comp .pt { display:inline-block; margin-top:8px; padding:3px 8px; border-radius:4px; font-size:0.75rem; font-weight:600; }
+.comp-logo { width:20px; height:20px; border-radius:4px; object-fit:contain; flex-shrink:0; }
+.competitor-header { display:flex; align-items:center; gap:14px; margin-bottom:8px; }
+.competitor-logo { width:36px; height:36px; border-radius:8px; object-fit:contain; border:1px solid var(--border); background:rgba(255,255,255,0.05); flex-shrink:0; }
 .nav-hint { position:fixed; bottom:16px; left:50%; transform:translateX(-50%); font-size:11px; color:var(--dim); opacity:.4; }
 .nav-arrows { display:none; }
 @media(max-width:768px){
@@ -76,8 +91,8 @@ td { color:var(--text2); }
   .slide-num { bottom:12px; right:16px; font-size:11px; }
   .nav-hint { display:none; }
   .nav-arrows { display:flex; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); gap:16px; z-index:200; }
-  .nav-arrows button { width:44px; height:44px; border-radius:50%; border:1px solid var(--border); background:var(--surface); color:var(--text); font-size:1.2rem; display:flex; align-items:center; justify-content:center; cursor:pointer; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
-  .nav-arrows button:active { background:var(--primary); color:var(--bg); }
+  .nav-arrows button { width:44px; height:44px; border-radius:50%; border:1px solid var(--border); background:var(--surface-solid); color:var(--text); font-size:1.2rem; display:flex; align-items:center; justify-content:center; cursor:pointer; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+  .nav-arrows button:active { background:var(--purple); color:var(--bg); }
   canvas { touch-action:pan-x pan-y; pointer-events:none; }
 }
 @media(max-width:480px){
@@ -97,7 +112,7 @@ td { color:var(--text2); }
   <h1>The Bull <span class="hi">x</span> Clonyo</h1>
   <p class="subtitle">Posizionamento competitivo e strategia di pricing per il tutor AI<br>di finanza personale n.1 in Italia</p>
   <p style="color:var(--dim);font-size:.85rem;margin-top:36px">Giugno 2026</p>
-  <span class="slide-num">1 / 11</span>
+  <span class="slide-num">1 / 20</span>
 </div>
 
 <!-- S2: Il mercato -->
@@ -106,13 +121,13 @@ td { color:var(--text2); }
   <p class="subtitle">Un settore in crescita, frammentato su 4 fasce di prezzo</p>
   <div class="g3" style="margin-top:12px">
     <div class="card" style="text-align:center">
-      <div class="stat" style="color:var(--accent-light)">€0</div>
+      <div class="stat" style="-webkit-text-fill-color:var(--turquoise);color:var(--turquoise);background:none">€0</div>
       <div class="label">Fascia gratuita</div>
       <p style="margin-top:10px;font-size:.88rem;color:var(--text2)">Podcast, YouTube, blog</p>
       <p style="font-size:.8rem;color:var(--dim);margin-top:4px">The Bull, Coletti, Mr RIP</p>
     </div>
     <div class="card" style="text-align:center">
-      <div class="stat" style="color:#93c5fd">€29–99</div>
+      <div class="stat" style="-webkit-text-fill-color:var(--blue);color:var(--blue);background:none">€29–99</div>
       <div class="label">Entry / anno</div>
       <p style="margin-top:10px;font-size:.88rem;color:var(--text2)">Community, membership</p>
       <p style="font-size:.8rem;color:var(--dim);margin-top:4px">NowTrade, Moneysurfers Ess.</p>
@@ -124,9 +139,9 @@ td { color:var(--text2); }
       <p style="font-size:.8rem;color:var(--dim);margin-top:4px">Casario, Affari Miei, Plannix</p>
     </div>
   </div>
-  <div class="card" style="margin-top:16px;border-color:var(--danger)">
+  <div class="card" style="margin-top:16px;border-color:rgba(255,95,138,0.4)">
     <div style="display:flex;align-items:center;gap:20px">
-      <div class="stat" style="color:var(--danger)">€1K–5K+</div>
+      <div class="stat" style="-webkit-text-fill-color:#FF5F8A;color:#FF5F8A;background:none">€1K–5K+</div>
       <div>
         <div class="label">High-ticket</div>
         <p style="font-size:.88rem;margin-top:4px;color:var(--text2)">Coaching, consulenza 1:1, club premium</p>
@@ -134,41 +149,417 @@ td { color:var(--text2); }
       </div>
     </div>
   </div>
-  <span class="slide-num">2 / 11</span>
+  <span class="slide-num">2 / 20</span>
 </div>
-<!-- S3: Competitor -->
+<!-- S3: Competitor Overview -->
 <div class="slide">
   <h2>I competitor nel dettaglio</h2>
   <p class="subtitle">Chi sono, cosa offrono, quanto costano</p>
   <div class="g4">
-    <div class="comp"><h4>Alfio Bardolla</h4><p>Formazione premium. Eventi live "Wake Up Call" come entry, upsell coaching. Quotata, €22M rev/anno.</p><span class="pt t-high">318–5.000€+</span></div>
-    <div class="comp"><h4>Marco Casario</h4><p>The 10Min Trader: corso 200+ ore, 45 strategie. Trading Room inclusa 1 anno. High-ticket.</p><span class="pt t-high">3.000€</span></div>
-    <div class="comp"><h4>Moneysurfers</h4><p>Corsi verticali + Inner Circle (Essential/Pro). Stock Mastery con AI. App gratuita lead magnet.</p><span class="pt t-mid">99€/a – 2.595€</span></div>
-    <div class="comp"><h4>Affari Miei</h4><p>Blog top SEO (86k visite/mese). Corsi one-shot + club FIP con portafogli modello annuale.</p><span class="pt t-high">97€ – 1.997€/a</span></div>
-    <div class="comp"><h4>Filippo Angeloni</h4><p>Consulente indipendente (Athena SCF) + formazione. Community 7.000+ investitori. Pricing riservato.</p><span class="pt t-mid">Non pubblico</span></div>
-    <div class="comp"><h4>NowTrade</h4><p>Suite BOT + segnali trading sportivo/betting. Mentorship con corsi + live chat. Entry basso.</p><span class="pt t-low">29,99€/mese</span></div>
-    <div class="comp"><h4>Paolo Coletti</h4><p>Professore. "Educati e Finanziati" YouTube: corso completo gratuito. Competitor di attenzione.</p><span class="pt t-free">Gratuito</span></div>
-    <div class="comp"><h4>IoInvesto SCF</h4><p>La piu grande SCF italiana (500M+ AUM). Fee-only senza conflitti. Analisi gratuita come lead.</p><span class="pt t-mid">0,7–1% AUM</span></div>
-    <div class="comp"><h4>Luca Lixi / Plannix</h4><p>Educazione finanziaria indipendente + consulenza fee-only flat. Corsi, community WikiLix, piattaforma Plannix.</p><span class="pt t-high">290–4.900€+</span></div>
+    <div class="comp"><h4><img src="https://www.google.com/s2/favicons?domain=alfiobardolla.com&sz=32" class="comp-logo" alt="">Alfio Bardolla</h4><p>Formazione premium. Eventi live "Wake Up Call" come entry, upsell coaching. Quotata, €22M rev/anno.</p><span class="pt t-high">318–5.000€+</span></div>
+    <div class="comp"><h4><img src="https://www.google.com/s2/favicons?domain=marcocasario.com&sz=32" class="comp-logo" alt="">Marco Casario</h4><p>The 10Min Trader: corso 200+ ore, 45 strategie. Trading Room inclusa 1 anno. High-ticket.</p><span class="pt t-high">3.000€</span></div>
+    <div class="comp"><h4><img src="https://www.google.com/s2/favicons?domain=moneysurfers.com&sz=32" class="comp-logo" alt="">Moneysurfers</h4><p>Corsi verticali + Inner Circle (Essential/Pro). Stock Mastery con AI. App gratuita lead magnet.</p><span class="pt t-mid">99€/a – 2.595€</span></div>
+    <div class="comp"><h4><img src="https://www.google.com/s2/favicons?domain=affarimiei.biz&sz=32" class="comp-logo" alt="">Affari Miei</h4><p>Blog top SEO (86k visite/mese). Corsi one-shot + club FIP con portafogli modello annuale.</p><span class="pt t-high">97€ – 1.997€/a</span></div>
+    <div class="comp"><h4><img src="https://www.google.com/s2/favicons?domain=filippoangeloni.com&sz=32" class="comp-logo" alt="">Filippo Angeloni</h4><p>Consulente indipendente (Athena SCF) + formazione. Community 7.000+ investitori. Pricing riservato.</p><span class="pt t-mid">Non pubblico</span></div>
+    <div class="comp"><h4><img src="https://www.google.com/s2/favicons?domain=nowtrade.it&sz=32" class="comp-logo" alt="">NowTrade</h4><p>Suite BOT + segnali trading sportivo/betting. Mentorship con corsi + live chat. Entry basso.</p><span class="pt t-low">29,99€/mese</span></div>
+    <div class="comp"><h4><img src="https://www.google.com/s2/favicons?domain=educatiefinanziati.it&sz=32" class="comp-logo" alt="">Paolo Coletti</h4><p>Professore. "Educati e Finanziati" YouTube: corso completo gratuito. Competitor di attenzione.</p><span class="pt t-free">Gratuito</span></div>
+    <div class="comp"><h4><img src="https://www.google.com/s2/favicons?domain=ioinvesto.net&sz=32" class="comp-logo" alt="">IoInvesto SCF</h4><p>La piu grande SCF italiana (500M+ AUM). Fee-only senza conflitti. Analisi gratuita come lead.</p><span class="pt t-mid">0,7–1% AUM</span></div>
+    <div class="comp"><h4><img src="https://www.google.com/s2/favicons?domain=plannix.co&sz=32" class="comp-logo" alt="">Luca Lixi / Plannix</h4><p>Educazione finanziaria indipendente + consulenza fee-only flat. Corsi, community WikiLix, piattaforma Plannix.</p><span class="pt t-high">290–4.900€+</span></div>
   </div>
-  <span class="slide-num">3 / 11</span>
+  <span class="slide-num">3 / 20</span>
 </div>
-<!-- S4: Quadrante 1 -->
+<!-- S4: Alfio Bardolla -->
+<div class="slide">
+  <div class="badge">Competitor 1/9</div>
+  <div class="competitor-header">
+    <img src="https://www.google.com/s2/favicons?domain=alfiobardolla.com&sz=64" class="competitor-logo" alt="Alfio Bardolla">
+    <div><h2 style="margin-bottom:0">Alfio Bardolla Training Group</h2></div>
+  </div>
+  <p class="subtitle">Formazione premium — eventi live + coaching high-ticket</p>
+  <div class="g2">
+    <div>
+      <table>
+        <thead><tr><th>Prodotto</th><th>Prezzo</th></tr></thead>
+        <tbody>
+          <tr><td>Wake Up Call — Basic</td><td><span class="tag t-mid">318€ + IVA</span></td></tr>
+          <tr><td>Wake Up Call — Premium</td><td><span class="tag t-mid">478€ + IVA</span></td></tr>
+          <tr><td>Wake Up Call — Elite</td><td><span class="tag t-high">997€ + IVA</span></td></tr>
+          <tr><td>Wake Up Call — Livestream</td><td><span class="tag t-mid">199–278€ + IVA</span></td></tr>
+          <tr><td>Corsi premium (trading, immobiliare)</td><td><span class="tag t-high">2.000–5.000€+</span></td></tr>
+          <tr><td>Coaching individuale</td><td><span class="tag t-high">5.000–10.000€+</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Modello di business</h3>
+        <p style="font-size:.92rem">Ticket one-shot per eventi + upsell corsi/coaching via funnel. Societa quotata AIM Italia.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Lead Magnet</h3>
+        <p style="font-size:.92rem">Corsi gratuiti, ebook, blog, YouTube</p>
+      </div>
+      <div class="card">
+        <div class="stat-sm" style="-webkit-text-fill-color:#FF5F8A;color:#FF5F8A;background:none">€22M</div>
+        <div class="label">Revenue annuo (AIM Italia)</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">4 / 20</span>
+</div>
+<!-- S5: Marco Casario -->
+<div class="slide">
+  <div class="badge">Competitor 2/9</div>
+  <div class="competitor-header">
+    <img src="https://www.google.com/s2/favicons?domain=marcocasario.com&sz=64" class="competitor-logo" alt="Marco Casario">
+    <div><h2 style="margin-bottom:0">Marco Casario — The 10Min Trader</h2></div>
+  </div>
+  <p class="subtitle">Corso high-ticket completo + Trading Room privata</p>
+  <div class="g2">
+    <div>
+      <table>
+        <thead><tr><th>Prodotto</th><th>Prezzo</th></tr></thead>
+        <tbody>
+          <tr><td>The 10Min Trader Complete Course</td><td><span class="tag t-high">3.000€ one-shot</span></td></tr>
+          <tr><td>Trading Room privata</td><td><span class="tag t-free">Inclusa 1 anno</span></td></tr>
+        </tbody>
+      </table>
+      <div class="card" style="margin-top:16px">
+        <h3>Dettagli corso</h3>
+        <ul style="list-style:none;padding:0">
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">200+ ore di contenuti</li>
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">45+ strategie operative</li>
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Accesso community corsisti</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Modello di business</h3>
+        <p style="font-size:.92rem">High-ticket one-shot con community inclusa per 1 anno. Funnel basato su webinar gratuiti.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Lead Magnet</h3>
+        <p style="font-size:.92rem">YouTube (video didattici e live), webinar gratuiti, "10Min Live Trading" gratuito</p>
+      </div>
+      <div class="card">
+        <div class="stat-sm">3.000€</div>
+        <div class="label">Prezzo unico — nessun abbonamento</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">5 / 20</span>
+</div>
+<!-- S6: Moneysurfers -->
+<div class="slide">
+  <div class="badge">Competitor 3/9</div>
+  <div class="competitor-header">
+    <img src="https://www.google.com/s2/favicons?domain=moneysurfers.com&sz=64" class="competitor-logo" alt="Moneysurfers">
+    <div><h2 style="margin-bottom:0">Moneysurfers</h2></div>
+  </div>
+  <p class="subtitle">Piattaforma corsi + membership ricorrente + AI tools</p>
+  <div class="g2">
+    <div>
+      <table>
+        <thead><tr><th>Prodotto</th><th>Prezzo</th></tr></thead>
+        <tbody>
+          <tr><td>Inner Circle Essential</td><td><span class="tag t-low">99€/anno</span></td></tr>
+          <tr><td>Inner Circle Pro</td><td><span class="tag t-mid">77,50€/mese</span></td></tr>
+          <tr><td>Stock Mastery (full online)</td><td><span class="tag t-high">3 rate × 865€ (2.595€)</span></td></tr>
+          <tr><td>Corsi singoli verticali</td><td><span class="tag t-mid">Variabile</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Modello di business</h3>
+        <p style="font-size:.92rem">One-shot corsi + membership ricorrente (Inner Circle). Pro include 3 analisi stock/mese + AI tools.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Lead Magnet</h3>
+        <p style="font-size:.92rem">App gratuita con corsi base, challenge introduttive, contenuti social</p>
+      </div>
+      <div class="card">
+        <div class="stat-sm" style="-webkit-text-fill-color:var(--blue);color:var(--blue);background:none">€99–2.595</div>
+        <div class="label">Range completo — da entry a premium</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">6 / 20</span>
+</div>
+<!-- S7: Affari Miei -->
+<div class="slide">
+  <div class="badge">Competitor 4/9</div>
+  <div class="competitor-header">
+    <img src="https://www.google.com/s2/favicons?domain=affarimiei.biz&sz=64" class="competitor-logo" alt="Affari Miei">
+    <div><h2 style="margin-bottom:0">Affari Miei (Davide Marciano)</h2></div>
+  </div>
+  <p class="subtitle">Blog top SEO + corsi one-shot + club con portafogli modello</p>
+  <div class="g2">
+    <div>
+      <table>
+        <thead><tr><th>Prodotto</th><th>Prezzo</th></tr></thead>
+        <tbody>
+          <tr><td>EASY PAC — Basic</td><td><span class="tag t-low">97€</span></td></tr>
+          <tr><td>Easy Investments Formula — Basic</td><td><span class="tag t-high">1.497€</span></td></tr>
+          <tr><td>Easy Investments Formula — Premium</td><td><span class="tag t-high">> 1.497€</span></td></tr>
+          <tr><td>Fast Investments Planner — Basic</td><td><span class="tag t-high">997€/anno</span></td></tr>
+          <tr><td>Fast Investments Planner — Full</td><td><span class="tag t-high">da 1.997€/anno</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Modello di business</h3>
+        <p style="font-size:.92rem">One-shot (corsi) + abbonamento annuale (club FIP con portafogli modello). SEO-driven acquisition.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Lead Magnet</h3>
+        <p style="font-size:.92rem">Blog (86k visite/mese), YouTube, newsletter gratuita</p>
+      </div>
+      <div class="card">
+        <div class="stat-sm" style="-webkit-text-fill-color:var(--turquoise);color:var(--turquoise);background:none">86K</div>
+        <div class="label">Visite/mese al blog (SEMrush)</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">7 / 20</span>
+</div>
+<!-- S8: Luca Lixi / Plannix -->
+<div class="slide">
+  <div class="badge">Competitor 5/9</div>
+  <div class="competitor-header">
+    <img src="https://www.google.com/s2/favicons?domain=plannix.co&sz=64" class="competitor-logo" alt="Plannix">
+    <div><h2 style="margin-bottom:0">Luca Lixi — Lixi Invest / Plannix</h2></div>
+  </div>
+  <p class="subtitle">Educazione indipendente + consulenza fee-only flat + community</p>
+  <div class="g2">
+    <div>
+      <table>
+        <thead><tr><th>Prodotto</th><th>Prezzo</th></tr></thead>
+        <tbody>
+          <tr><td>Plannix — Vision (check-up)</td><td><span class="tag t-mid">da 290€</span></td></tr>
+          <tr><td>Plannix — Smart</td><td><span class="tag t-high">990€ una tantum</span></td></tr>
+          <tr><td>Plannix — Premium</td><td><span class="tag t-high">1.490€ una tantum</span></td></tr>
+          <tr><td>Plannix — Private</td><td><span class="tag t-high">da 4.900€ + IVA</span></td></tr>
+          <tr><td>Lixi Invest — Corsi e club (Tradix)</td><td><span class="tag t-mid">Non pubblico (funnel)</span></td></tr>
+          <tr><td>AEGIS SCF — Consulenza</td><td><span class="tag t-mid">Fee-only, concordata</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Modello di business</h3>
+        <p style="font-size:.92rem">Fee-only a parcella fissa (Plannix) + vendita corsi digitali e membership premium (Lixi Invest) + consulenza patrimoniale (AEGIS SCF).</p>
+      </div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Lead Magnet</h3>
+        <p style="font-size:.92rem">YouTube "LIXI Invest", blog Plannix, community Facebook/Telegram "WikiLix"</p>
+      </div>
+      <div class="card">
+        <div class="stat-sm" style="-webkit-text-fill-color:var(--violet);color:var(--violet);background:none">290–4.900€+</div>
+        <div class="label">Range parcella fissa fee-only</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">8 / 20</span>
+</div>
+<!-- S9: NowTrade -->
+<div class="slide">
+  <div class="badge">Competitor 6/9</div>
+  <div class="competitor-header">
+    <img src="https://www.google.com/s2/favicons?domain=nowtrade.it&sz=64" class="competitor-logo" alt="NowTrade">
+    <div><h2 style="margin-bottom:0">NowTrade</h2></div>
+  </div>
+  <p class="subtitle">Suite BOT + segnali trading sportivo e betting exchange</p>
+  <div class="g2">
+    <div>
+      <table>
+        <thead><tr><th>Prodotto</th><th>Prezzo</th></tr></thead>
+        <tbody>
+          <tr><td>Piano Investor</td><td><span class="tag t-low">29,99€/mese</span></td></tr>
+          <tr><td>Mentorship — mensile</td><td><span class="tag t-low">29,99€/mese</span></td></tr>
+          <tr><td>Mentorship — annuale</td><td><span class="tag t-mid">299,99€/anno</span></td></tr>
+        </tbody>
+      </table>
+      <div class="card" style="margin-top:16px">
+        <h3>Cosa include</h3>
+        <ul style="list-style:none;padding:0">
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Suite BOT automatizzati</li>
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Segnali operativi</li>
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Corsi + live chat</li>
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Rateizzazione Klarna</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Modello di business</h3>
+        <p style="font-size:.92rem">Subscription mensile/annuale. Focus su trading sportivo e betting exchange — nicchia specifica.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Lead Magnet</h3>
+        <p style="font-size:.92rem">Contenuti su Telegram e social (non strutturati)</p>
+      </div>
+      <div class="card">
+        <div class="stat-sm" style="-webkit-text-fill-color:var(--turquoise);color:var(--turquoise);background:none">€29,99</div>
+        <div class="label">Entry point piu basso tra i competitor</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">9 / 20</span>
+</div>
+<!-- S10: Trading Millimetrico -->
+<div class="slide">
+  <div class="badge">Competitor 7/9</div>
+  <div class="competitor-header">
+    <img src="https://www.google.com/s2/favicons?domain=tradingmillimetrico.com&sz=64" class="competitor-logo" alt="Trading Millimetrico">
+    <div><h2 style="margin-bottom:0">Trading Millimetrico (Alfa Advisor)</h2></div>
+  </div>
+  <p class="subtitle">Expert Advisor algoritmico — licenza perpetua + abbonamenti</p>
+  <div class="g2">
+    <div>
+      <table>
+        <thead><tr><th>Prodotto</th><th>Prezzo</th></tr></thead>
+        <tbody>
+          <tr><td>Alfa Advisor — Licenza Perpetua (Early Access)</td><td><span class="tag t-high">1.497€</span></td></tr>
+          <tr><td>Piani abbonamento (mensile/trim/sem/annuale)</td><td><span class="tag t-mid">Pricing dinamico</span></td></tr>
+          <tr><td>Corsi MQL5 Mastery</td><td><span class="tag t-mid">Non pubblico</span></td></tr>
+        </tbody>
+      </table>
+      <div class="card" style="margin-top:16px">
+        <h3>Caratteristiche</h3>
+        <ul style="list-style:none;padding:0">
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Trading algoritmico automatizzato</li>
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Aggiornamenti a vita (licenza perpetua)</li>
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Early Access fino al 31/12/2026</li>
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Formazione su Expert Advisor (MQL5)</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Modello di business</h3>
+        <p style="font-size:.92rem">Licenza one-shot + abbonamenti ricorrenti per l'EA algoritmico. Prodotto software, non educativo puro.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Lead Magnet</h3>
+        <p style="font-size:.92rem">Contenuti tecnici, documentazione sul sito</p>
+      </div>
+      <div class="card">
+        <div class="stat-sm" style="-webkit-text-fill-color:#FF5F8A;color:#FF5F8A;background:none">1.497€</div>
+        <div class="label">Licenza perpetua — accesso illimitato</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">10 / 20</span>
+</div>
+<!-- S11: IoInvesto SCF -->
+<div class="slide">
+  <div class="badge">Competitor 8/9</div>
+  <div class="competitor-header">
+    <img src="https://www.google.com/s2/favicons?domain=ioinvesto.net&sz=64" class="competitor-logo" alt="IoInvesto SCF">
+    <div><h2 style="margin-bottom:0">IoInvesto SCF</h2></div>
+  </div>
+  <p class="subtitle">La piu grande SCF italiana — consulenza fee-only su AUM</p>
+  <div class="g2">
+    <div>
+      <table>
+        <thead><tr><th>Fascia patrimonio</th><th>Fee annua</th></tr></thead>
+        <tbody>
+          <tr><td>Capitali piccoli</td><td><span class="tag t-mid">~1% annuo</span></td></tr>
+          <tr><td>Capitali medi</td><td><span class="tag t-mid">0,7% annuo</span></td></tr>
+          <tr><td>Capitali grandi</td><td><span class="tag t-low">~0,50% annuo</span></td></tr>
+          <tr><td>Minimo</td><td><span class="tag t-low">500€ + IVA/anno</span></td></tr>
+        </tbody>
+      </table>
+      <div class="card" style="margin-top:16px">
+        <h3>Punti di forza</h3>
+        <ul style="list-style:none;padding:0">
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Fee-only: nessuna retrocessione</li>
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Nessun conflitto di interesse</li>
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Analisi gratuita del portafoglio</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Modello di business</h3>
+        <p style="font-size:.92rem">Fee su AUM (percentuale decrescente), completamente fee-only senza retrocessioni. Modello tradizionale SCF.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Lead Magnet</h3>
+        <p style="font-size:.92rem">Analisi gratuita del portafoglio come primo contatto</p>
+      </div>
+      <div class="card">
+        <div class="stat-sm" style="-webkit-text-fill-color:var(--violet);color:var(--violet);background:none">€500M+</div>
+        <div class="label">Asset Under Management (AUM)</div>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">11 / 20</span>
+</div>
+<!-- S12: Paolo Coletti -->
+<div class="slide">
+  <div class="badge">Competitor 9/9</div>
+  <div class="competitor-header">
+    <img src="https://www.google.com/s2/favicons?domain=educatiefinanziati.it&sz=64" class="competitor-logo" alt="Paolo Coletti">
+    <div><h2 style="margin-bottom:0">Paolo Coletti — Educati e Finanziati</h2></div>
+  </div>
+  <p class="subtitle">Professore universitario — contenuto gratuito come modello core</p>
+  <div class="g2">
+    <div>
+      <table>
+        <thead><tr><th>Prodotto</th><th>Prezzo</th></tr></thead>
+        <tbody>
+          <tr><td>Corso completo YouTube</td><td><span class="tag t-free">Gratuito</span></td></tr>
+          <tr><td>Sito educatiefinanziati.it</td><td><span class="tag t-free">Corsi gratuiti + a pagamento</span></td></tr>
+        </tbody>
+      </table>
+      <div class="card" style="margin-top:16px">
+        <h3>Copertura tematica</h3>
+        <ul style="list-style:none;padding:0">
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">ETF e fondi indicizzati</li>
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Obbligazioni</li>
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Risparmio e pianificazione</li>
+          <li style="padding:5px 0;font-size:.9rem;color:var(--text2)">Analisi critica prodotti finanziari</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Modello di business</h3>
+        <p style="font-size:.92rem">Contenuto gratuito come core, eventuale monetizzazione secondaria. Non compete su revenue ma su attenzione.</p>
+      </div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Lead Magnet</h3>
+        <p style="font-size:.92rem">Il contenuto stesso e il lead magnet: corsi YouTube strutturati completamente free</p>
+      </div>
+      <div class="card" style="border-color:var(--cyan)">
+        <h3 style="color:var(--cyan)">Nota strategica</h3>
+        <p style="font-size:.88rem">Competitor di <span class="hi">attenzione</span>, non di revenue. Dimostra che l'educazione finanziaria gratuita crea audience enorme — il clone AI aggiunge personalizzazione e monetizzazione.</p>
+      </div>
+    </div>
+  </div>
+  <span class="slide-num">12 / 20</span>
+</div>
+<!-- S13: Quadrante 1 -->
 <div class="slide">
   <h2>Quadrante: Prezzo vs Interattivita</h2>
   <p class="subtitle">Dove si posiziona The Bull + Clonyo rispetto ai competitor</p>
   <div class="chart-box"><canvas id="q1"></canvas></div>
-  <span class="slide-num">4 / 11</span>
+  <span class="slide-num">13 / 20</span>
 </div>
 
-<!-- S5: Quadrante 2 -->
+<!-- S14: Quadrante 2 -->
 <div class="slide">
   <h2>Quadrante: Accessibilita vs Profondita</h2>
   <p class="subtitle">L'opportunita: educazione profonda a prezzo accessibile</p>
   <div class="chart-box"><canvas id="q2"></canvas></div>
-  <span class="slide-num">5 / 11</span>
+  <span class="slide-num">14 / 20</span>
 </div>
-<!-- S6: Vuoto di mercato -->
+
+<!-- S15: Vuoto di mercato -->
 <div class="slide">
   <h2>Il vuoto di mercato</h2>
   <p class="subtitle">Nessun competitor italiano occupa questo spazio</p>
@@ -183,15 +574,14 @@ td { color:var(--text2); }
       </ul>
     </div>
     <div class="card-hi">
-      <h3 style="color:var(--primary-light)">Cosa manca</h3>
+      <h3 style="color:var(--cyan)">Cosa manca</h3>
       <p style="font-size:1.05rem;color:var(--text);line-height:1.7">Un <span class="hi">tutor educativo personale</span>, disponibile 24/7, con la voce e il metodo di un creator di fiducia, a un prezzo accessibile (<span class="hi">€10–30/mese</span>).</p>
       <p style="margin-top:14px;font-size:.95rem;color:var(--text2)">Interattivo come la consulenza.<br>Accessibile come il podcast.<br>Profondo come un corso.</p>
     </div>
   </div>
-  <span class="slide-num">6 / 11</span>
+  <span class="slide-num">15 / 20</span>
 </div>
-
-<!-- S7: Audience -->
+<!-- S16: Audience -->
 <div class="slide">
   <h2>L'audience di The Bull</h2>
   <p class="subtitle">Dati gen–giu 2026 — Podcast finanza personale n.1 in Italia</p>
@@ -206,9 +596,9 @@ td { color:var(--text2); }
     <div class="card" style="text-align:center"><div class="stat-sm">77.5K</div><div class="label">Follower Instagram</div></div>
   </div>
   <p style="margin-top:20px;text-align:center;font-size:.9rem;color:var(--dim)">Bacino unico stimato: <span class="hi">500.000–600.000</span> ascoltatori semestrali</p>
-  <span class="slide-num">7 / 11</span>
+  <span class="slide-num">16 / 20</span>
 </div>
-<!-- S8: Benchmark -->
+<!-- S17: Benchmark -->
 <div class="slide">
   <h2>Benchmark pricing — Competitor diretti</h2>
   <p class="subtitle">Prezzi verificati, giugno 2026</p>
@@ -222,19 +612,19 @@ td { color:var(--text2); }
       <tr><td style="color:var(--text);font-weight:600">NowTrade</td><td>BOT + Mentorship</td><td><span class="tag t-low">29,99€/mese</span></td><td>Subscription</td></tr>
       <tr><td style="color:var(--text);font-weight:600">Trading Library</td><td>Segnali Intraday</td><td><span class="tag t-mid">67€/m – 659€/a</span></td><td>Subscription</td></tr>
       <tr><td style="color:var(--text);font-weight:600">Luca Lixi / Plannix</td><td>Consulenza flat + Corsi</td><td><span class="tag t-high">290 – 4.900€+</span></td><td>One-shot (parcella)</td></tr>
-      <tr style="background:rgba(245,158,11,.06)"><td style="color:var(--primary-light);font-weight:700">The Bull + Clonyo</td><td style="color:var(--primary-light)">Tutor AI 24/7 WhatsApp</td><td><span class="tag" style="background:#1a3a1a;color:#6ee7b7">9,99–29,99€/m</span></td><td style="color:var(--primary-light)">Subscription</td></tr>
+      <tr style="background:rgba(123,77,255,0.08)"><td style="color:var(--cyan);font-weight:700">The Bull + Clonyo</td><td style="color:var(--cyan)">Tutor AI 24/7 WhatsApp</td><td><span class="tag t-free">9,99–29,99€/m</span></td><td style="color:var(--cyan)">Subscription</td></tr>
     </tbody>
   </table>
-  <span class="slide-num">8 / 11</span>
+  <span class="slide-num">17 / 20</span>
 </div>
-<!-- S9: Strategia pricing -->
+<!-- S18: Strategia pricing -->
 <div class="slide">
   <h2>Strategia di pricing proposta</h2>
   <p class="subtitle">Tre tier — voce di Riccardo su tutti i livelli</p>
   <div class="g3">
     <div class="card">
-      <h3 style="color:var(--accent-light)">Freemium</h3>
-      <div class="stat" style="color:var(--accent-light);font-size:2rem">€0</div>
+      <h3 style="color:var(--turquoise)">Freemium</h3>
+      <div class="stat" style="-webkit-text-fill-color:var(--turquoise);color:var(--turquoise);background:none;font-size:2rem">€0</div>
       <ul style="list-style:none;padding:0;margin-top:14px">
         <li style="padding:5px 0;font-size:.88rem;color:var(--text2)">10 domande / mese</li>
         <li style="padding:5px 0;font-size:.88rem;color:var(--text2)">Testo + audio voce Riccardo</li>
@@ -243,7 +633,7 @@ td { color:var(--text2); }
       <p style="margin-top:10px;font-size:.78rem;color:var(--dim)">Obiettivo: trial, acquisizione</p>
     </div>
     <div class="card-hi">
-      <h3 style="color:var(--primary-light)">Base</h3>
+      <h3 style="color:var(--cyan)">Base</h3>
       <div class="stat" style="font-size:2rem">€9,99–14,99</div>
       <div class="label">/mese (€99–149/anno)</div>
       <ul style="list-style:none;padding:0;margin-top:14px">
@@ -253,9 +643,9 @@ td { color:var(--text2); }
       </ul>
       <p style="margin-top:10px;font-size:.78rem;color:var(--dim)">Obiettivo: conversione di massa</p>
     </div>
-    <div class="card" style="border-color:#7c3aed">
-      <h3 style="color:#c4b5fd">Premium</h3>
-      <div class="stat" style="color:#c4b5fd;font-size:2rem">€19,99–29,99</div>
+    <div class="card" style="border-color:var(--violet)">
+      <h3 style="color:var(--violet)">Premium</h3>
+      <div class="stat" style="-webkit-text-fill-color:var(--violet);color:var(--violet);background:none;font-size:2rem">€19,99–29,99</div>
       <div class="label">/mese (€199–299/anno)</div>
       <ul style="list-style:none;padding:0;margin-top:14px">
         <li style="padding:5px 0;font-size:.88rem;color:var(--text2)">Tutto Base +</li>
@@ -266,12 +656,12 @@ td { color:var(--text2); }
       <p style="margin-top:10px;font-size:.78rem;color:var(--dim)">Obiettivo: ARPU, power user</p>
     </div>
   </div>
-  <div style="margin-top:20px;padding:14px 20px;background:var(--surface);border-radius:10px;border:1px solid var(--border)">
+  <div style="margin-top:20px;padding:14px 20px;background:linear-gradient(180deg, rgba(42,26,97,0.5) 0%, rgba(12,8,30,0.6) 100%);border-radius:10px;border:1px solid var(--border)">
     <p style="font-size:.88rem;color:var(--text2)"><span class="hi">One-shot:</span> Report "Il Tuo Piano" (€29–49) · Onboarding (€49–99) · Lifetime Early Adopter (€299–499, max 500)</p>
   </div>
-  <span class="slide-num">9 / 11</span>
+  <span class="slide-num">18 / 20</span>
 </div>
-<!-- S10: Conversione -->
+<!-- S19: Conversione -->
 <div class="slide">
   <h2>Potenziale di conversione</h2>
   <p class="subtitle">500k ascoltatori unici + 15k iscritti newsletter</p>
@@ -284,44 +674,44 @@ td { color:var(--text2); }
         <p style="font-size:.88rem;margin-top:4px;color:var(--text2)">MRR: €37.475 (a €14,99/mese)</p>
       </div>
       <div class="card-hi" style="margin-bottom:14px">
-        <h3 style="color:var(--primary-light)">Medio (1%)</h3>
+        <h3 style="color:var(--cyan)">Medio (1%)</h3>
         <div class="stat" style="font-size:1.8rem">5.000 utenti</div>
         <p style="font-size:.88rem;margin-top:4px;color:var(--text2)">MRR: €74.950</p>
       </div>
       <div class="card">
-        <h3 style="color:var(--accent-light)">Ottimistico (2%)</h3>
-        <div class="stat" style="font-size:1.8rem;color:var(--accent-light)">10.000 utenti</div>
+        <h3 style="color:var(--turquoise)">Ottimistico (2%)</h3>
+        <div class="stat" style="-webkit-text-fill-color:var(--turquoise);color:var(--turquoise);background:none;font-size:1.8rem">10.000 utenti</div>
         <p style="font-size:.88rem;margin-top:4px;color:var(--text2)">MRR: €149.900</p>
       </div>
     </div>
   </div>
   <p style="margin-top:14px;font-size:.82rem;color:var(--dim);text-align:center">Newsletter (15k, 5–10% conv.) genera i primi 750–1.500 utenti paganti al lancio</p>
-  <span class="slide-num">10 / 11</span>
+  <span class="slide-num">19 / 20</span>
 </div>
-
-<!-- S11: Next -->
+<!-- S20: Next -->
 <div class="slide">
   <h2>Prossimi passi</h2>
   <p class="subtitle">Roadmap verso il lancio</p>
   <div style="max-width:680px;width:100%">
     <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:22px">
-      <div style="min-width:38px;width:38px;height:38px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--bg);flex-shrink:0">1</div>
-      <div><h3 style="color:var(--text);margin-bottom:4px">Luglio — Teaser</h3><p style="font-size:.92rem;color:var(--text2)">Primo annuncio clone AI in Stories IG e podcast. Curiosita.</p></div>
+      <div style="min-width:38px;width:38px;height:38px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--bg);flex-shrink:0">1</div>
+      <div><h3 style="color:var(--text);margin-bottom:4px">Luglio — Teaser</h3><p style="font-size:.92rem">Primo annuncio clone AI in Stories IG e podcast. Curiosita.</p></div>
     </div>
     <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:22px">
-      <div style="min-width:38px;width:38px;height:38px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--bg);flex-shrink:0">2</div>
-      <div><h3 style="color:var(--text);margin-bottom:4px">Agosto — Validazione WTP</h3><p style="font-size:.92rem;color:var(--text2)">Sondaggio newsletter: "Pagheresti €X/mese per un tutor AI con la voce di Riccardo?"</p></div>
+      <div style="min-width:38px;width:38px;height:38px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--bg);flex-shrink:0">2</div>
+      <div><h3 style="color:var(--text);margin-bottom:4px">Agosto — Validazione WTP</h3><p style="font-size:.92rem">Sondaggio newsletter: "Pagheresti €X/mese per un tutor AI con la voce di Riccardo?"</p></div>
     </div>
     <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:22px">
-      <div style="min-width:38px;width:38px;height:38px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--bg);flex-shrink:0">3</div>
-      <div><h3 style="color:var(--text);margin-bottom:4px">Settembre — Waitlist</h3><p style="font-size:.92rem;color:var(--text2)">Apertura waitlist, pricing scontato primi 500. Lifetime deal super-fan.</p></div>
+      <div style="min-width:38px;width:38px;height:38px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--bg);flex-shrink:0">3</div>
+      <div><h3 style="color:var(--text);margin-bottom:4px">Settembre — Waitlist</h3><p style="font-size:.92rem">Apertura waitlist, pricing scontato primi 500. Lifetime deal super-fan.</p></div>
     </div>
     <div style="display:flex;gap:14px;align-items:flex-start">
-      <div style="min-width:38px;width:38px;height:38px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--bg);flex-shrink:0">4</div>
-      <div><h3 style="color:var(--text);margin-bottom:4px">Q4 2026 — Lancio</h3><p style="font-size:.92rem;color:var(--text2)">Go-live con pricing calibrato su dati WTP. Annuncio podcast + newsletter + IG.</p></div>
+      <div style="min-width:38px;width:38px;height:38px;background:var(--turquoise);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--bg);flex-shrink:0">4</div>
+      <div><h3 style="color:var(--text);margin-bottom:4px">Q4 2026 — Lancio</h3><p style="font-size:.92rem">Go-live con pricing calibrato su dati WTP. Annuncio podcast + newsletter + IG.</p></div>
     </div>
   </div>
-  <span class="slide-num">11 / 11</span>
+  <button id="btnRestart" onclick="event.stopPropagation();go(0);" style="margin-top:32px;display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:10px;border:1px solid rgba(255,255,255,0.22);background:linear-gradient(90deg,#7B4DFF 0%,#42E8F2 100%);color:#fff;font-weight:700;font-size:14px;font-family:inherit;cursor:pointer;box-shadow:0 0 24px rgba(123,77,255,0.48),0 0 36px rgba(66,232,242,0.22);transition:transform 180ms ease,box-shadow 180ms ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">&#8592; Torna all'inizio</button>
+  <span class="slide-num">20 / 20</span>
 </div>
 
 <div class="nav-hint">Frecce o click per navigare</div>
@@ -329,33 +719,39 @@ td { color:var(--text2); }
 <script>
 Chart.register(ChartDataLabels);
 var slides=document.querySelectorAll('.slide'),cur=0,tot=slides.length;
-function go(n){slides[cur].classList.remove('active');cur=(n+tot)%tot;slides[cur].classList.add('active');document.getElementById('prog').style.width=((cur+1)/tot*100)+'%';if(cur===3)initQ1();if(cur===4)initQ2();if(cur===9)initConv();}
+function go(n){if(n<0||n>=tot)return;slides[cur].classList.remove('active');cur=n;slides[cur].classList.add('active');document.getElementById('prog').style.width=((cur+1)/tot*100)+'%';if(cur===12)initQ1();if(cur===13)initQ2();if(cur===18)initConv();}
 document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();go(cur+1);}if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1);}});
-document.addEventListener('click',function(e){if(e.target.closest('canvas')||e.target.closest('.nav-arrows'))return;if(e.clientX>window.innerWidth/2)go(cur+1);else go(cur-1);});
+document.addEventListener('click',function(e){if(e.target.closest('canvas')||e.target.closest('.nav-arrows')||e.target.closest('#btnRestart'))return;if(e.clientX>window.innerWidth/2)go(cur+1);else go(cur-1);});
 var tx=0,ty=0;
 document.addEventListener('touchstart',function(e){tx=e.changedTouches[0].screenX;ty=e.changedTouches[0].screenY;},{passive:true});
 document.addEventListener('touchend',function(e){var dx=tx-e.changedTouches[0].screenX,dy=Math.abs(ty-e.changedTouches[0].screenY);if(Math.abs(dx)>60&&Math.abs(dx)>dy){if(dx>0)go(cur+1);else go(cur-1);}},{passive:true});
 document.getElementById('btnP').addEventListener('click',function(e){e.stopPropagation();go(cur-1);});
 document.getElementById('btnN').addEventListener('click',function(e){e.stopPropagation();go(cur+1);});
 document.getElementById('prog').style.width=(1/tot*100)+'%';
+</script>
+<script>
 var q1Done=false;function initQ1(){if(q1Done)return;q1Done=true;
 new Chart(document.getElementById('q1'),{type:'bubble',data:{datasets:[
-{label:'Gratuiti/Passivi',data:[{x:1.5,y:0.5,r:12,name:'The Bull (oggi)',detail:'Podcast gratuito, 5.6M stream/sem'},{x:1,y:0.8,r:9,name:'Paolo Coletti',detail:'YouTube gratuito, corso base'},{x:0.8,y:0.3,r:8,name:'Mr RIP',detail:'Blog+Twitch, FIRE'}],backgroundColor:'rgba(156,163,175,.7)',borderColor:'#9ca3af'},
-{label:'Corsi/One-shot',data:[{x:3,y:8.5,r:11,name:'Marco Casario',detail:'3.000€, 200+ ore, Trading Room'},{x:3.5,y:6.5,r:10,name:'Moneysurfers',detail:'99€/a – 2.595€, corsi+membership'},{x:2,y:9,r:13,name:'Alfio Bardolla',detail:'318–5.000€+, eventi+coaching'},{x:3,y:7.5,r:11,name:'Affari Miei',detail:'97€ – 1.997€/a, corsi+club'}],backgroundColor:'rgba(96,165,250,.7)',borderColor:'#60a5fa'},
-{label:'Segnali/Trading',data:[{x:4.5,y:3.5,r:9,name:'NowTrade',detail:'29,99€/m, BOT+betting'},{x:5,y:5,r:9,name:'Trading Library',detail:'67€/m, segnali intraday'},{x:4,y:8,r:10,name:'Trading Millimetrico',detail:'1.497€ licenza EA'}],backgroundColor:'rgba(248,113,113,.7)',borderColor:'#f87171'},
-{label:'Consulenza',data:[{x:8,y:7,r:11,name:'IoInvesto SCF',detail:'0,7–1% AUM, fee-only, 500M+'},{x:6.5,y:5.5,r:10,name:'Moneyfarm',detail:'0,35–0,75% AUM, robo-advisor'},{x:7,y:7.5,r:11,name:'Plannix (Lixi)',detail:'290–4.900€+, consulenza flat fee-only'}],backgroundColor:'rgba(167,139,250,.7)',borderColor:'#a78bfa'},
-{label:'The Bull + Clonyo',data:[{x:9,y:2.5,r:18,name:'CLONYO',detail:'€9,99–29,99/m, tutor AI 24/7 voce Riccardo'}],backgroundColor:'rgba(245,158,11,.85)',borderColor:'#fcd34d',borderWidth:3}
-]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#e5e5e5',padding:14,font:{size:11}}},tooltip:{backgroundColor:'#1f1f1f',titleColor:'#fcd34d',bodyColor:'#e5e5e5',borderColor:'#333',borderWidth:1,padding:12,callbacks:{title:function(c){return c[0].raw.name;},label:function(c){return c.raw.detail;}}},datalabels:{color:'#fff',font:{size:10,weight:'600'},formatter:function(v){return v.name;},align:'top',offset:6,textStrokeColor:'#0a0a0a',textStrokeWidth:3},annotation:{annotations:{vuoto:{type:'box',xMin:7,xMax:10,yMin:0.5,yMax:4.5,backgroundColor:'rgba(245,158,11,.06)',borderColor:'rgba(252,211,77,.5)',borderWidth:2,borderDash:[6,4],label:{display:true,content:'VUOTO DI MERCATO',position:'start',color:'#fcd34d',font:{size:11,weight:'bold'}}}}}},scales:{x:{title:{display:true,text:'INTERATTIVITA (passivo → personalizzato 1:1)',color:'#d4d4d4',font:{size:11,weight:'600'}},min:0,max:10,grid:{color:'#1f1f1f'},ticks:{color:'#a3a3a3',font:{size:10}}},y:{title:{display:true,text:'PREZZO (basso → alto)',color:'#d4d4d4',font:{size:11,weight:'600'}},min:0,max:10,grid:{color:'#1f1f1f'},ticks:{color:'#a3a3a3',font:{size:10}}}}}});}
+{label:'Gratuiti/Passivi',data:[{x:1.5,y:0.5,r:12,name:'The Bull (oggi)',detail:'Podcast gratuito, 5.6M stream/sem'},{x:1,y:0.8,r:9,name:'Paolo Coletti',detail:'YouTube gratuito, corso base'},{x:0.8,y:0.3,r:8,name:'Mr RIP',detail:'Blog+Twitch, FIRE'}],backgroundColor:'rgba(143,135,179,.6)',borderColor:'#8F87B3'},
+{label:'Corsi/One-shot',data:[{x:3,y:8.5,r:11,name:'Marco Casario',detail:'3.000€, 200+ ore, Trading Room'},{x:3.5,y:6.5,r:10,name:'Moneysurfers',detail:'99€/a – 2.595€, corsi+membership'},{x:2,y:9,r:13,name:'Alfio Bardolla',detail:'318–5.000€+, eventi+coaching'},{x:3,y:7.5,r:11,name:'Affari Miei',detail:'97€ – 1.997€/a, corsi+club'}],backgroundColor:'rgba(93,140,255,.65)',borderColor:'#5D8CFF'},
+{label:'Segnali/Trading',data:[{x:4.5,y:3.5,r:9,name:'NowTrade',detail:'29,99€/m, BOT+betting'},{x:5,y:5,r:9,name:'Trading Library',detail:'67€/m, segnali intraday'},{x:4,y:8,r:10,name:'Trading Millimetrico',detail:'1.497€ licenza EA'}],backgroundColor:'rgba(255,95,138,.6)',borderColor:'#FF5F8A'},
+{label:'Consulenza',data:[{x:8,y:7,r:11,name:'IoInvesto SCF',detail:'0,7–1% AUM, fee-only, 500M+'},{x:6.5,y:5.5,r:10,name:'Moneyfarm',detail:'0,35–0,75% AUM, robo-advisor'},{x:7,y:7.5,r:11,name:'Plannix (Lixi)',detail:'290–4.900€+, consulenza flat fee-only'}],backgroundColor:'rgba(155,108,255,.6)',borderColor:'#9B6CFF'},
+{label:'The Bull + Clonyo',data:[{x:9,y:2.5,r:18,name:'CLONYO',detail:'€9,99–29,99/m, tutor AI 24/7 voce Riccardo'}],backgroundColor:'rgba(66,232,242,.8)',borderColor:'#42E8F2',borderWidth:3}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#C9C2E6',padding:14,font:{size:11}}},tooltip:{backgroundColor:'#100B22',titleColor:'#42E8F2',bodyColor:'#C9C2E6',borderColor:'rgba(196,177,255,0.28)',borderWidth:1,padding:12,callbacks:{title:function(c){return c[0].raw.name;},label:function(c){return c.raw.detail;}}},datalabels:{color:'#fff',font:{size:10,weight:'600'},formatter:function(v){return v.name;},align:'top',offset:6,textStrokeColor:'#05040F',textStrokeWidth:3},annotation:{annotations:{vuoto:{type:'box',xMin:7,xMax:10,yMin:0.5,yMax:4.5,backgroundColor:'rgba(66,232,242,.04)',borderColor:'rgba(66,232,242,.5)',borderWidth:2,borderDash:[6,4],label:{display:true,content:'VUOTO DI MERCATO',position:'start',color:'#42E8F2',font:{size:11,weight:'bold'}}}}}},scales:{x:{title:{display:true,text:'INTERATTIVITA (passivo → personalizzato 1:1)',color:'#C9C2E6',font:{size:11,weight:'600'}},min:0,max:10,grid:{color:'rgba(196,177,255,0.1)'},ticks:{color:'#8F87B3',font:{size:10}}},y:{title:{display:true,text:'PREZZO (basso → alto)',color:'#C9C2E6',font:{size:11,weight:'600'}},min:0,max:10,grid:{color:'rgba(196,177,255,0.1)'},ticks:{color:'#8F87B3',font:{size:10}}}}}});}
+</script>
+<script>
 var q2Done=false;function initQ2(){if(q2Done)return;q2Done=true;
 new Chart(document.getElementById('q2'),{type:'bubble',data:{datasets:[
-{label:'Gratuiti',data:[{x:9,y:4.5,r:12,name:'The Bull (podcast)',detail:'Gratuito, 300+ ep, non personalizzato'},{x:9,y:5.5,r:9,name:'Paolo Coletti',detail:'Gratuito, corso strutturato YT'},{x:8.5,y:2,r:8,name:'Mr RIP',detail:'Gratuito, blog FIRE tecnico'}],backgroundColor:'rgba(156,163,175,.7)',borderColor:'#9ca3af'},
-{label:'Corsi a pagamento',data:[{x:3,y:8,r:11,name:'Marco Casario',detail:'3.000€, molto profondo ma costoso'},{x:4,y:7,r:10,name:'Moneysurfers',detail:'Fino a 2.595€, percorso completo'},{x:2,y:6.5,r:13,name:'Alfio Bardolla',detail:'Caro, piu motivazionale che tecnico'},{x:3.5,y:8.5,r:11,name:'Affari Miei',detail:'1.497€+, strutturato e pratico'}],backgroundColor:'rgba(96,165,250,.7)',borderColor:'#60a5fa'},
-{label:'Segnali operativi',data:[{x:5.5,y:2.5,r:9,name:'NowTrade',detail:'29,99€/m, operativo non educativo'},{x:4.5,y:3.5,r:9,name:'Trading Library',detail:'67€/m, segnali senza formazione'},{x:3.5,y:3,r:8,name:'TendenzaMercati',detail:'Segnali Forex, pricing nascosto'}],backgroundColor:'rgba(248,113,113,.7)',borderColor:'#f87171'},
-{label:'Consulenza',data:[{x:2,y:9,r:11,name:'IoInvesto SCF',detail:'Profondissimo ma caro (0,7–1% AUM)'},{x:4.5,y:6,r:10,name:'Moneyfarm',detail:'Automatizzato, profondita media'},{x:3,y:8.5,r:11,name:'Plannix (Lixi)',detail:'290–4.900€+, profondo, fee-only flat'}],backgroundColor:'rgba(167,139,250,.7)',borderColor:'#a78bfa'},
-{label:'The Bull + Clonyo',data:[{x:8,y:8.5,r:18,name:'CLONYO',detail:'€9,99–29,99/m: profondo+accessibile+personale'}],backgroundColor:'rgba(245,158,11,.85)',borderColor:'#fcd34d',borderWidth:3}
-]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#e5e5e5',padding:14,font:{size:11}}},tooltip:{backgroundColor:'#1f1f1f',titleColor:'#fcd34d',bodyColor:'#e5e5e5',borderColor:'#333',borderWidth:1,padding:12,callbacks:{title:function(c){return c[0].raw.name;},label:function(c){return c.raw.detail;}}},datalabels:{color:'#fff',font:{size:10,weight:'600'},formatter:function(v){return v.name;},align:'top',offset:6,textStrokeColor:'#0a0a0a',textStrokeWidth:3},annotation:{annotations:{opp:{type:'box',xMin:6.5,xMax:9.5,yMin:7,yMax:9.5,backgroundColor:'rgba(245,158,11,.06)',borderColor:'rgba(252,211,77,.5)',borderWidth:2,borderDash:[6,4],label:{display:true,content:'PROFONDO + ACCESSIBILE',position:'start',color:'#fcd34d',font:{size:11,weight:'bold'}}}}}},scales:{x:{title:{display:true,text:'ACCESSIBILITA PREZZO (caro → economico)',color:'#d4d4d4',font:{size:11,weight:'600'}},min:0,max:10,grid:{color:'#1f1f1f'},ticks:{color:'#a3a3a3',font:{size:10}}},y:{title:{display:true,text:'PROFONDITA CONTENUTO (superficiale → approfondito)',color:'#d4d4d4',font:{size:11,weight:'600'}},min:0,max:10,grid:{color:'#1f1f1f'},ticks:{color:'#a3a3a3',font:{size:10}}}}}});}
+{label:'Gratuiti',data:[{x:9,y:4.5,r:12,name:'The Bull (podcast)',detail:'Gratuito, 300+ ep, non personalizzato'},{x:9,y:5.5,r:9,name:'Paolo Coletti',detail:'Gratuito, corso strutturato YT'},{x:8.5,y:2,r:8,name:'Mr RIP',detail:'Gratuito, blog FIRE tecnico'}],backgroundColor:'rgba(143,135,179,.6)',borderColor:'#8F87B3'},
+{label:'Corsi a pagamento',data:[{x:3,y:8,r:11,name:'Marco Casario',detail:'3.000€, molto profondo ma costoso'},{x:4,y:7,r:10,name:'Moneysurfers',detail:'Fino a 2.595€, percorso completo'},{x:2,y:6.5,r:13,name:'Alfio Bardolla',detail:'Caro, piu motivazionale che tecnico'},{x:3.5,y:8.5,r:11,name:'Affari Miei',detail:'1.497€+, strutturato e pratico'}],backgroundColor:'rgba(93,140,255,.65)',borderColor:'#5D8CFF'},
+{label:'Segnali operativi',data:[{x:5.5,y:2.5,r:9,name:'NowTrade',detail:'29,99€/m, operativo non educativo'},{x:4.5,y:3.5,r:9,name:'Trading Library',detail:'67€/m, segnali senza formazione'},{x:3.5,y:3,r:8,name:'TendenzaMercati',detail:'Segnali Forex, pricing nascosto'}],backgroundColor:'rgba(255,95,138,.6)',borderColor:'#FF5F8A'},
+{label:'Consulenza',data:[{x:2,y:9,r:11,name:'IoInvesto SCF',detail:'Profondissimo ma caro (0,7–1% AUM)'},{x:4.5,y:6,r:10,name:'Moneyfarm',detail:'Automatizzato, profondita media'},{x:3,y:8.5,r:11,name:'Plannix (Lixi)',detail:'290–4.900€+, profondo, fee-only flat'}],backgroundColor:'rgba(155,108,255,.6)',borderColor:'#9B6CFF'},
+{label:'The Bull + Clonyo',data:[{x:8,y:8.5,r:18,name:'CLONYO',detail:'€9,99–29,99/m: profondo+accessibile+personale'}],backgroundColor:'rgba(66,232,242,.8)',borderColor:'#42E8F2',borderWidth:3}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#C9C2E6',padding:14,font:{size:11}}},tooltip:{backgroundColor:'#100B22',titleColor:'#42E8F2',bodyColor:'#C9C2E6',borderColor:'rgba(196,177,255,0.28)',borderWidth:1,padding:12,callbacks:{title:function(c){return c[0].raw.name;},label:function(c){return c.raw.detail;}}},datalabels:{color:'#fff',font:{size:10,weight:'600'},formatter:function(v){return v.name;},align:'top',offset:6,textStrokeColor:'#05040F',textStrokeWidth:3},annotation:{annotations:{opp:{type:'box',xMin:6.5,xMax:9.5,yMin:7,yMax:9.5,backgroundColor:'rgba(66,232,242,.04)',borderColor:'rgba(66,232,242,.5)',borderWidth:2,borderDash:[6,4],label:{display:true,content:'PROFONDO + ACCESSIBILE',position:'start',color:'#42E8F2',font:{size:11,weight:'bold'}}}}}},scales:{x:{title:{display:true,text:'ACCESSIBILITA PREZZO (caro → economico)',color:'#C9C2E6',font:{size:11,weight:'600'}},min:0,max:10,grid:{color:'rgba(196,177,255,0.1)'},ticks:{color:'#8F87B3',font:{size:10}}},y:{title:{display:true,text:'PROFONDITA CONTENUTO (superficiale → approfondito)',color:'#C9C2E6',font:{size:11,weight:'600'}},min:0,max:10,grid:{color:'rgba(196,177,255,0.1)'},ticks:{color:'#8F87B3',font:{size:10}}}}}});}
+</script>
+<script>
 var cvDone=false;function initConv(){if(cvDone)return;cvDone=true;
-new Chart(document.getElementById('convChart'),{type:'bar',data:{labels:['Conservativo (0,5%)','Medio (1%)','Ottimistico (2%)'],datasets:[{label:'MRR',data:[37475,74950,149900],backgroundColor:['#4b5563','#f59e0b','#34d399'],borderRadius:8,barThickness:48}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:{color:'#fff',font:{size:12,weight:'700'},anchor:'end',align:'top',formatter:function(v){return '€'+(v/1000).toFixed(0)+'k';}},tooltip:{backgroundColor:'#1f1f1f',bodyColor:'#e5e5e5',callbacks:{label:function(c){return '€'+c.raw.toLocaleString('it-IT')+'/mese';}}}},scales:{x:{grid:{display:false},ticks:{color:'#d4d4d4',font:{size:10}}},y:{grid:{color:'#1f1f1f'},ticks:{color:'#a3a3a3',font:{size:10},callback:function(v){return '€'+(v/1000)+'k';}}}}}}); }
+new Chart(document.getElementById('convChart'),{type:'bar',data:{labels:['Conservativo (0,5%)','Medio (1%)','Ottimistico (2%)'],datasets:[{label:'MRR',data:[37475,74950,149900],backgroundColor:['rgba(143,135,179,0.7)','rgba(123,77,255,0.8)','rgba(66,232,242,0.8)'],borderColor:['#8F87B3','#7B4DFF','#42E8F2'],borderWidth:1,borderRadius:8,barThickness:48}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:{color:'#fff',font:{size:12,weight:'700'},anchor:'end',align:'top',formatter:function(v){return '€'+(v/1000).toFixed(0)+'k';}},tooltip:{backgroundColor:'#100B22',bodyColor:'#C9C2E6',borderColor:'rgba(196,177,255,0.28)',borderWidth:1,callbacks:{label:function(c){return '€'+c.raw.toLocaleString('it-IT')+'/mese';}}}},scales:{x:{grid:{display:false},ticks:{color:'#C9C2E6',font:{size:10}}},y:{grid:{color:'rgba(196,177,255,0.1)'},ticks:{color:'#8F87B3',font:{size:10},callback:function(v){return '€'+(v/1000)+'k';}}}}}}); }
 </script>
 </body>
 </html>
