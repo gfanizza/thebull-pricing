@@ -759,28 +759,53 @@ td { color:var(--text2); }
 <!-- S19: Conversione -->
 <div class="slide">
   <h2>Potenziale di conversione</h2>
-  <p class="subtitle">500k ascoltatori unici + 15k iscritti newsletter</p>
+  <p class="subtitle">Come leggerlo: bacino di partenza × tasso di conversione × prezzo medio = MRR</p>
+  <!-- Assunzioni -->
+  <div class="card" style="margin-bottom:18px;padding:16px 22px">
+    <h3 style="color:var(--cyan);margin-bottom:8px">Ipotesi di calcolo</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+      <div>
+        <div class="label">Bacino raggiungibile</div>
+        <p style="font-size:1rem;color:var(--text);font-weight:600;margin-top:4px">500.000 ascoltatori unici/semestre</p>
+        <p style="font-size:.78rem;color:var(--dim);margin-top:2px">Spotify 425K + YouTube 354K, deduplicate</p>
+      </div>
+      <div>
+        <div class="label">Prezzo medio ipotizzato</div>
+        <p style="font-size:1rem;color:var(--text);font-weight:600;margin-top:4px">€14,99/mese (piano Unlimited)</p>
+        <p style="font-size:.78rem;color:var(--dim);margin-top:2px">Tier piu probabile per conversione di massa</p>
+      </div>
+      <div>
+        <div class="label">Primo canale di lancio</div>
+        <p style="font-size:1rem;color:var(--text);font-weight:600;margin-top:4px">Newsletter (15.000 iscritti)</p>
+        <p style="font-size:.78rem;color:var(--dim);margin-top:2px">Conversion rate email atteso: 5–10%</p>
+      </div>
+    </div>
+  </div>
+  <!-- Scenari -->
   <div class="g2">
     <div class="chart-box" style="min-height:300px"><canvas id="convChart"></canvas></div>
     <div>
       <div class="card" style="margin-bottom:14px">
-        <h3 style="color:var(--dim)">Conservativo (0,5%)</h3>
-        <div class="stat" style="font-size:1.8rem">2.500 utenti</div>
-        <p style="font-size:.88rem;margin-top:4px;color:var(--text2)">MRR: €37.475 (a €14,99/mese)</p>
+        <h3 style="color:var(--dim)">Conservativo</h3>
+        <p style="font-size:.78rem;color:var(--dim);margin-bottom:6px">0,5% di 500K = 2.500 utenti paganti</p>
+        <div class="stat" style="font-size:1.8rem">€37.475</div>
+        <p style="font-size:.82rem;margin-top:4px;color:var(--text2)">MRR · 2.500 × €14,99</p>
       </div>
       <div class="card-hi" style="margin-bottom:14px">
-        <h3 style="color:var(--cyan)">Medio (1%)</h3>
-        <div class="stat" style="font-size:1.8rem">5.000 utenti</div>
-        <p style="font-size:.88rem;margin-top:4px;color:var(--text2)">MRR: €74.950</p>
+        <h3 style="color:var(--cyan)">Medio</h3>
+        <p style="font-size:.78rem;color:var(--dim);margin-bottom:6px">1% di 500K = 5.000 utenti paganti</p>
+        <div class="stat" style="font-size:1.8rem">€74.950</div>
+        <p style="font-size:.82rem;margin-top:4px;color:var(--text2)">MRR · 5.000 × €14,99</p>
       </div>
       <div class="card">
-        <h3 style="color:var(--turquoise)">Ottimistico (2%)</h3>
-        <div class="stat" style="-webkit-text-fill-color:var(--turquoise);color:var(--turquoise);background:none;font-size:1.8rem">10.000 utenti</div>
-        <p style="font-size:.88rem;margin-top:4px;color:var(--text2)">MRR: €149.900</p>
+        <h3 style="color:var(--turquoise)">Ottimistico</h3>
+        <p style="font-size:.78rem;color:var(--dim);margin-bottom:6px">2% di 500K = 10.000 utenti paganti</p>
+        <div class="stat" style="-webkit-text-fill-color:var(--turquoise);color:var(--turquoise);background:none;font-size:1.8rem">€149.900</div>
+        <p style="font-size:.82rem;margin-top:4px;color:var(--text2)">MRR · 10.000 × €14,99</p>
       </div>
     </div>
   </div>
-  <p style="margin-top:14px;font-size:.82rem;color:var(--dim);text-align:center">Newsletter (15k, 5–10% conv.) genera i primi 750–1.500 utenti paganti al lancio</p>
+  <p style="margin-top:14px;font-size:.82rem;color:var(--dim);text-align:center"><strong style="color:var(--text2)">Lancio iniziale via newsletter:</strong> 15.000 iscritti × 5–10% conv. = 750–1.500 utenti paganti dal giorno 1</p>
   <span class="slide-num">19 / 20</span>
 </div>
 <!-- S20: Next -->
